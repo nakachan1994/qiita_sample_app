@@ -5,5 +5,6 @@
   <% end %>
   <p>説明：<%= post.content %></p>
   <p>ユーザー名：<%= post.user.name %></p>
+  <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
 </div>
 <% end %>

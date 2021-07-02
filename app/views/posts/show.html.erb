@@ -7,3 +7,24 @@
     <%= link_to "削除", post_path(@post), method: :delete %>
   <% end %>
 </div>
+<!--コメント部分-->
+<div class="comments">
+  <p>コメント件数：<%= @post.comments.count %></p>
+  <% @post.comments.each do |comment| %>
+    <%= comment.user.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% if comment.user == current_user %>
+      <div class="comment-delete">
+        <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div class="new-comment">
+  <%= form_with(model:[@post, @comment], local: true) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
+
+
