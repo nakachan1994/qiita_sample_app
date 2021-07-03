@@ -1,0 +1,4 @@
+$("#comments_area").html("<%= j(render 'comments/post_comments', post: @post, comment: @comment) %>");
+$("textarea").val('');
+<!--下記を-->
+$('#flash-message').html("<%= j(render 'layouts/flash') %>");

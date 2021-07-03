@@ -11,24 +11,16 @@
     <%= render 'likes/like', post: @post %>
   </div>
 </div>
-<!--コメント部分-->
-<div class="comments">
-  <p>コメント件数：<%= @post.comments.count %></p>
-  <% @post.comments.each do |comment| %>
-    <%= comment.user.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-    <% if comment.user == current_user %>
-      <div class="comment-delete">
-        <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+<!--部分テンプレート化-->
+<!--コメントフォーム-->
 <div class="new-comment">
-  <%= form_with(model:[@post, @comment], local: true) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+  <%= render 'comments/form', post: @post, comment: @comment %>
 </div>
+<!--コメント一覧部分-->
+<!--divタグのclassをid="comments_area"に変更-->
+<div id="comments_area"> 
+  <%= render 'comments/post_comments', post: @post %>
+</div>
+
 
 
