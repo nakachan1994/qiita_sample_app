@@ -19,6 +19,9 @@
         <%= link_to '投稿一覧', posts_path %>
       </li>
       <li>
+        <%= link_to 'ランキング', ranks_rank_path %>
+      </li>
+      <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>

@@ -1,0 +1,8 @@
+<!--配列の1つ目から順に1位、２位と表示される-->
+<% user_ranks.each.with_index(1) do |user, i| %>
+<div>
+  第<%= i %>位
+    <%= user.name %>
+  <%= user.posts.count %>
+</div>
+<% end %>

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="post_like_rank">
+      <%= render 'ranks/post_rank', post_ranks: @post_like_ranks %>
+    </div>
+    <div class="post_comment_rank">
+      <%= render 'ranks/post_rank', post_ranks: @post_comment_ranks %>
+    </div>
+    <div class="my_post_like_rank">
+      <%= render 'ranks/post_rank', post_ranks: @my_post_like_ranks %>
+    </div>
+    <div class="user_post_rank">
+      <%= render 'ranks/user_rank', user_ranks: @user_post_ranks %>
+    </div>
+    <div class="user_post_like_rank">
+      <%= render 'ranks/user_rank', user_ranks: @user_post_like_ranks %>
+    </div>
+  </div>
+</div>

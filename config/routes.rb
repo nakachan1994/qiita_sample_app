@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ranks/rank'
   devise_for :users
   root to: 'homes#top'
   resources :posts, only: [:new, :create, :index, :show, :destroy] do
