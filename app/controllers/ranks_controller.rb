@@ -14,5 +14,11 @@ class RanksController < ApplicationController
       post_like_count.store(user, Like.where(post_id: Post.where(user_id: user.id).pluck(:id)).count)
     end
     @user_post_like_ranks = post_like_count.sort_by { |_, v| v }.reverse.to_h.keys
+    # 月間ランキング
+    @month_user_post_ranks = User.where(id: Post.group(:user_id).where(created_at: Time.current.all_month).order('count(user_id) desc').pluck(:user_id))
+    # 週間ランキング
+    @week_post_like_ranks = Post.find(Like.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').pluck(:post_id))
+    # 日別ランキング
+    @today_post_comment_ranks = Post.find(Comment.group(:post_id).where(created_at: Time.current.all_day).order('count(post_id) desc').pluck(:post_id))
   end
 end

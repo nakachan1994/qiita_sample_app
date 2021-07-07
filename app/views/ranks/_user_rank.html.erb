@@ -2,7 +2,7 @@
 <% user_ranks.each.with_index(1) do |user, i| %>
 <div>
   第<%= i %>位
-    <%= user.name %>
-  <%= user.posts.count %>
+  <%= user.name %>
+  投稿数:<%= user.posts.count %>
 </div>
 <% end %>

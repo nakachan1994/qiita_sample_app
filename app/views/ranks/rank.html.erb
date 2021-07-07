@@ -1,19 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="post_like_rank">
+      <h4>投稿いいね数ランキング</h4>
       <%= render 'ranks/post_rank', post_ranks: @post_like_ranks %>
     </div>
     <div class="post_comment_rank">
+      <h4>投稿コメント数ランキング</h4>
       <%= render 'ranks/post_rank', post_ranks: @post_comment_ranks %>
     </div>
     <div class="my_post_like_rank">
+      <h4>自分の投稿いいね数ランキング</h4>
       <%= render 'ranks/post_rank', post_ranks: @my_post_like_ranks %>
     </div>
     <div class="user_post_rank">
+      <h4>ユーザー投稿数ランキング</h4>
       <%= render 'ranks/user_rank', user_ranks: @user_post_ranks %>
     </div>
     <div class="user_post_like_rank">
+      <h4>ユーザーいいね数ランキング</h4>
       <%= render 'ranks/user_rank', user_ranks: @user_post_like_ranks %>
+    </div>
+    <div class="month_user_post_rank">
+      <h4>月間ユーザー投稿数ランキング</h4>
+      <%= render 'ranks/user_rank', user_ranks: @month_user_post_ranks %>
+    </div>
+    <div class="week_post_like_rankspost_like_rank">
+      <h4>週間投稿いいね数ランキング</h4>
+      <%= render 'ranks/post_rank', post_ranks: @week_post_like_ranks %>
+    </div>
+    <div class="today_post_comment_rank">
+      <h4>今日の投稿コメント数ランキング</h4>
+      <%= render 'ranks/post_rank', post_ranks: @today_post_comment_ranks %>
     </div>
   </div>
 </div>
