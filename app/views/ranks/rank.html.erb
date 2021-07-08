@@ -2,7 +2,40 @@
   <div class="row">
     <div class="post_like_rank">
       <h4>投稿いいね数ランキング</h4>
-      <%= render 'ranks/post_rank', post_ranks: @post_like_ranks %>
+      <div>
+        <!--同率順位表示-->
+        <% last_like = 0 %>
+        <% j = 1 %>
+        <% @post_like_ranks.each.with_index(1) do |rank, i| %>
+          <!--最初の値をlast_likeに保存-->
+          <% if i == 1 %>
+            <% last_like = rank.likes.count %>
+          <% end %>
+          <!--last_likeといいね数比べて同じなら同じ順位、違うなら次の順位表示-->
+          <% if rank.likes.count != last_like %>
+            <% j = i %>
+            第<%= j %>位
+            <%= link_to post_path(rank.id) do %>
+              <%= attachment_image_tag rank, :image, :fill, 100, 100 %>
+            <% end %>
+            <p>説明：<%= rank.content %></p>
+            <p>ユーザー名：<%= rank.user.name %></p>
+            <p><%= link_to "#{rank.comments.count} コメント", post_path(rank.id) %></p>
+            <p><%= rank.likes.count %>いいね</p>
+            <% last_like = rank.likes.count %>
+          <% else %>
+            <% last_like = rank.likes.count %>
+            第<%= j %>位
+            <%= link_to post_path(rank.id) do %>
+              <%= attachment_image_tag rank, :image, :fill, 100, 100 %>
+            <% end %>
+            <p>説明：<%= rank.content %></p>
+            <p>ユーザー名：<%= rank.user.name %></p>
+            <p><%= link_to "#{rank.comments.count} コメント", post_path(rank.id) %></p>
+            <p><%= rank.likes.count %>いいね</p>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="post_comment_rank">
       <h4>投稿コメント数ランキング</h4>

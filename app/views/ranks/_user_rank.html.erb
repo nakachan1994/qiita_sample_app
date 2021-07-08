@@ -3,6 +3,8 @@
 <div>
   第<%= i %>位
   <%= user.name %>
-  投稿数:<%= user.posts.count %>
+  投稿数:<!--同率順位表示-->
+  <% last_like = 0 %>
+  <% j = 1 %><%= user.posts.count %>
 </div>
 <% end %>
