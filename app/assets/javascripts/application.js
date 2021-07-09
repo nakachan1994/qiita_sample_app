@@ -18,3 +18,13 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// 以下１行を追加
+$(document).on('turbolinks:load', function() {
+  $(function () {
+    $('.alert_btn').click(function(){
+      alert('Hello World!')
+    });
+  });
+// 閉じタグも忘れず追加
+});
