@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery3
+//= require jquery.jscroll.min.js
 //= require popper
 //= require bootstrap-sprockets
 
@@ -27,4 +28,16 @@ $(document).on('turbolinks:load', function() {
     });
   });
 // 閉じタグも忘れず追加
+});
+
+// 無限スクロール
+$(window).on('scroll', function() {
+    scrollHeight = $(document).height();
+    scrollPosition = $(window).height() + $(window).scrollTop();
+    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+          $('.jscroll').jscroll({
+            contentSelector: '.scroll-list',
+            nextSelector: 'span.next:last a'
+          });
+    }
 });

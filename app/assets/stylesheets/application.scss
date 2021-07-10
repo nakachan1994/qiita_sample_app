@@ -16,3 +16,8 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ 
+ // ページ表示部分を非表示
+ nav.pagination {
+  display: none;
+}
