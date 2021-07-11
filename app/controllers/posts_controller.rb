@@ -12,7 +12,9 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).per(3)
+    @new_posts = Post.page(params[:page]).per(3)
+    @popular_posts = Post.find(Like.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+    @pick_up_posts = Post.find(Like.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) desc').pluck(:post_id))
   end
 
   def show

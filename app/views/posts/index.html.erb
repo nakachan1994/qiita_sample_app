@@ -1,15 +1,46 @@
-<!--無限スクロール-->
-<div class="scroll-list jscroll">
-  <% @posts.each do |post| %>
-  <div>
-    <%= link_to post_path(post.id) do %>
-      <%= attachment_image_tag post, :image, :fill, 200, 200 %>
-    <% end %>
-    <p>説明：<%= post.content %></p>
-    <p>ユーザー名：<%= post.user.name %></p>
-    <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <!--タブ部分-->
+      <ul class="tab-list d-flex justify-content-around text-center list-unstyled mx-3">
+        <li class="tab tab-active heading">
+          New
+        </li>
+        <li class="tab heading">
+          Popular
+        </li>
+        <li class="tab heading">
+          Pick up
+        </li>
+      </ul>
+      <!--タブで選択された要素部分-->
+      <div class="tabbox-contents">
+        <div class="tabbox box-show">
+          <!--無限スクロール-->
+          <div class="scroll-list jscroll">
+            <%= render 'posts/list', posts: @new_posts %>
+            <!--ページ表示部分-->
+            <%#= paginate @posts %>
+          </div>
+        </div>
+        <div class="tabbox">
+          <!--無限スクロール-->
+          <div class="scroll-list jscroll">
+            <%= render 'posts/list', posts: @popular_posts %>
+            <!--ページ表示部分-->
+            <%#= paginate @posts %>
+          </div>
+        </div>
+        <div class="tabbox">
+          <!--無限スクロール-->
+          <div class="scroll-list jscroll">
+            <%= render 'posts/list', posts: @pick_up_posts %>
+            <!--ページ表示部分-->
+            <%#= paginate @posts %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <% end %>
-  <!--ページ表示部分-->
-  <%= paginate @posts %>
 </div>
+
