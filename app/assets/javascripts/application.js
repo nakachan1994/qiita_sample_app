@@ -35,8 +35,9 @@ $(window).on('scroll', function() {
     scrollHeight = $(document).height();
     scrollPosition = $(window).height() + $(window).scrollTop();
     if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
-          $('.jscroll').jscroll({
-            contentSelector: '.scroll-list',
+          $('.box-show > .jscroll').jscroll({
+            // 無限スクロールした要素のどこを使うか、tabで今選択されているタブを判断
+            contentSelector: $('.box-show > .scroll-list').attr('tab'),
             nextSelector: 'span.next:last a'
           });
     }

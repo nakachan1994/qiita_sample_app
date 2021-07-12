@@ -17,26 +17,32 @@
       <div class="tabbox-contents">
         <div class="tabbox box-show">
           <!--無限スクロール-->
-          <div class="scroll-list jscroll">
+          <!--classにnew-tab,tabに.new-tab追加-->
+          <div class="scroll-list jscroll new-tab" tab=".new-tab">
             <%= render 'posts/list', posts: @new_posts %>
             <!--ページ表示部分-->
-            <%#= paginate @posts %>
+            <!--param_name追加-->
+            <%= paginate @new_posts, param_name: "new_page" %>
           </div>
         </div>
         <div class="tabbox">
           <!--無限スクロール-->
-          <div class="scroll-list jscroll">
+          <!--classにpopular-tab,tabに.popular-tab追加-->
+          <div class="scroll-list jscroll popular-tab" tab=".popular-tab">
             <%= render 'posts/list', posts: @popular_posts %>
             <!--ページ表示部分-->
-            <%#= paginate @posts %>
+            <!--param_name追加-->
+            <%= paginate @popular_posts, param_name: "popular_page" %>
           </div>
         </div>
         <div class="tabbox">
           <!--無限スクロール-->
-          <div class="scroll-list jscroll">
+          <!--classにpick-up-tab,tabに.pick-up-tab追加-->
+          <div class="scroll-list jscroll pick-up-tab" tab=".pick-up-tab">
             <%= render 'posts/list', posts: @pick_up_posts %>
             <!--ページ表示部分-->
-            <%#= paginate @posts %>
+            <!--param_name追加-->
+            <%= paginate @pick_up_posts, param_name: "pick_up_page" %>
           </div>
         </div>
       </div>
