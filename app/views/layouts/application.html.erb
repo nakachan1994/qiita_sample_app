@@ -13,6 +13,7 @@
     <header>
       <% if user_signed_in? %>
       <li>
+        <!--data: {"turbolinks" => false}を-->
         <%= link_to 'Top', root_path, data: {"turbolinks" => false} %>
       </li>
       <li>
