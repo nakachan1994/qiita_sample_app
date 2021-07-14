@@ -73,3 +73,34 @@ $(document).on('turbolinks:load', function() {
     });
   });
 });
+
+// ページトップボタン表示
+// Turbolinks無効化(詳しくは過去記事参照)
+$(document).on('turbolinks:load', function() {
+  // 画面をスクロールを起点
+  $(window).scroll(function () {
+    // ページのトップの位置をnowに代入
+    var now = $(window).scrollTop();
+    // ページトップから2500pxスクロールしたら以下を実行
+    if (now > 1000) {
+      // ボタンがふわっと現れる
+      $('.pagetop').fadeIn("slow");
+    } else {
+      // ボタンがふわっと消える
+      $('.pagetop').fadeOut('slow');
+    }
+  });
+});
+// ページトップへ戻るクリックで、スクロールして１番上に戻る
+// Turbolinks無効化(詳しくは過去記事参照)
+$(document).on('turbolinks:load', function() {
+  $(function(){
+    // ボタンクリックで発火
+    $('.pagetop').click(function(){
+      // アニメーションで速さを指定してサーっとページトップまで戻ります
+      $('body,html').animate({
+      scrollTop: 0},500);
+      return false;
+    });
+  });
+});
