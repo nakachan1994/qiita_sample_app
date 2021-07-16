@@ -45,3 +45,29 @@
   transform: rotate(-45deg);
   top: 45%;
 }
+
+// スライドショーの矢印デザイン
+.fa-angle-left {
+  font-size: 50px;
+  // 絶対配置から位置を決める
+  position: absolute;
+  z-index: 100;
+  left: 30px;
+  top: 230px;
+  color: gray;
+}
+
+.fa-angle-right {
+  font-size: 50px;
+  // 絶対配置から位置を決める
+  position: absolute;
+  z-index: 100;
+  right: 30px;
+  top: 230px;
+  color: gray;
+}
+// ドットのデザイン
+.slick-dots{
+  color: rgb(116, 116, 116);
+  font-size: 50px;
+}

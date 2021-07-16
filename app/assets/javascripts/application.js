@@ -104,3 +104,18 @@ $(document).on('turbolinks:load', function() {
     });
   });
 });
+
+// スライドショー
+// Turbolinks無効化(詳しくは過去記事参照)
+$(document).on('turbolinks:load', function(){
+  $('.slick').slick({
+    // 自動再生
+    autoplay:true,
+    // ドットの表示
+    // ,　を追加しました
+    dots:true,  
+    // 右左の切り替えボタン
+    prevArrow: '<i class="fas fa-angle-left"></i>',
+    nextArrow: '<i class="fas fa-angle-right"></i>'
+  });
+});
