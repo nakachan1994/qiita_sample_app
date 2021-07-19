@@ -1,5 +1,8 @@
 <h1>画像投稿フォーム</h1>
 <%= form_with model: @post, local:true do |f| %>
+  <!--エラーメッセージはform内に記述-->
+  <!--変数modelにf.objectを渡す-->
+  <%= render 'layouts/error_messages', model: f.object %>
   <h4>画像</h4>
   <%= f.attachment_field :image %>
   <h4>内容</h4>

@@ -7,8 +7,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path, notice: '投稿に成功しました'
+    else
+      render :new
+    end
   end
 
   def index
@@ -30,7 +33,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path, alert: '削除しました'
+    redirect_to posts_path, alert: '投稿を削除しました'
   end
 
   private

@@ -1,2 +1,5 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<% if flash[:notice] %>
+  <p class="alert alert-success"><%= notice %></p>
+<% elsif flash[:alert] %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
