@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'ranks/rank'
   devise_for :users
   root to: 'homes#top'
-  resources :posts, only: [:new, :create, :index, :show, :destroy] do
+  resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resource :likes, only:[:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end

@@ -5,7 +5,7 @@ RSpec.describe Post, type: :model do
     it "有効なpostの場合は保存されるか" do
       expect(build(:post)).to be_valid
     end
-    
+
     context "空白のバリデーションチェック" do
       it "imegeが空白の場合にエラーメッセージが返ってくるか" do
         post = build(:post, image: nil)

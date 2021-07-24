@@ -6,6 +6,7 @@
   <p>ユーザー名：<%= post.user.name %></p>
   <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
   <% if current_user == post.user %>
+    <%= link_to "編集", edit_post_path(post) %>
     <%= link_to "削除", post_path(post), method: :delete %>
   <% end %>
 <% end %>
