@@ -9,4 +9,9 @@
     <%= link_to "編集", edit_post_path(post) %>
     <%= link_to "削除", post_path(post), method: :delete %>
   <% end %>
+  <div>
+    <%= link_to "https://twitter.com/share?url=#{ request.url }&text=【テスト】%0a%0a#{ post.content }、シェアさいこう〜", target: '_blank' do %>
+      <i class="fab fa-twitter" style='color: #3399FF;'></i>シェア
+    <% end %>
+  </div>
 <% end %>

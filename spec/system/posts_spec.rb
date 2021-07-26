@@ -29,7 +29,7 @@ describe '投稿に関するテスト' do
         expect(page).to have_content "投稿に成功しました"
       end
     end
-    
+
     context "投稿が失敗したとき" do
       it "投稿失敗後の遷移先が正しいか" do
         # contentのフォームを空にする
@@ -49,13 +49,13 @@ describe '投稿に関するテスト' do
       end
     end
   end
-  
+
   describe "削除のテスト" do
     before do
       sign_in user
       visit posts_path
     end
-    
+
     it "削除リンクが表示されているか" do
       # 削除のパスへのリンクがあるか
       expect(page).to have_link "", href: post_path(post)
