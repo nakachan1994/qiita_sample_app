@@ -51,6 +51,10 @@
     </main>
     <footer>
         <%= link_to 'お問い合わせ', new_contact_path %>
+        <!--ログインしてるユーザーが管理者の場合のみ-->
+        <% if current_user.try(:admin?) %>
+          <%= link_to '管理者ログイン', rails_admin_path %>
+        <% end %>
     </footer>
   </body>
 </html>
