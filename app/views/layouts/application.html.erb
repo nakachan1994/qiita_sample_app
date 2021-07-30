@@ -11,35 +11,41 @@
   </head>
 
   <body>
-    <header>
-      <% if user_signed_in? %>
-      <li>
-        <!--data: {"turbolinks" => false}を追加-->
-        <%= link_to 'Top', root_path, data: {"turbolinks" => false} %>
-      </li>
-      <li>
-        <%= link_to '投稿フォーム', new_post_path %>
-      </li>
-      <li>
-        <%= link_to '投稿一覧', posts_path %>
-      </li>
-      <li>
-        <%= link_to 'ランキング', ranks_rank_path %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to 'Top', root_path, data: {"turbolinks" => false} %>
-      </li>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
+    <header class="sticky-top">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark text-white">
+        <a>
+          <!--data: {"turbolinks" => false}を追加-->
+          <%= link_to 'Top', root_path, data: {"turbolinks" => false} %>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to '投稿フォーム', new_post_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to '投稿一覧', posts_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'ランキング', ranks_rank_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_user_registration_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_user_session_path %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
     </header>
     <main>
       <!--フラッシュメッセージの部分をdivタグで囲む-->
