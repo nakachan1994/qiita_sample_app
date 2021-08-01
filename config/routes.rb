@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :likes, only:[:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
-  
+
   # ネストさせる
   resources :users do
     resource :relationships, only: [:create, :destroy]

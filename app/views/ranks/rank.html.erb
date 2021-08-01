@@ -19,7 +19,11 @@
               <%= attachment_image_tag rank, :image, :fill, 100, 100 %>
             <% end %>
             <p>説明：<%= rank.content %></p>
-            <p>ユーザー名：<%= rank.user.name %></p>
+            <p>
+              <%= link_to user_path(rank.user) do %>
+                ユーザー名：<%= rank.user.name %>
+              <% end %>
+            </p>
             <p><%= link_to "#{rank.comments.count} コメント", post_path(rank.id) %></p>
             <p><%= rank.likes.count %>いいね</p>
             <% last_like = rank.likes.count %>
@@ -30,7 +34,11 @@
               <%= attachment_image_tag rank, :image, :fill, 100, 100 %>
             <% end %>
             <p>説明：<%= rank.content %></p>
-            <p>ユーザー名：<%= rank.user.name %></p>
+            <p>
+              <%= link_to user_path(rank.user) do %>
+                ユーザー名：<%= rank.user.name %>
+              <% end %>
+            </p>
             <p><%= link_to "#{rank.comments.count} コメント", post_path(rank.id) %></p>
             <p><%= rank.likes.count %>いいね</p>
           <% end %>
@@ -41,7 +49,7 @@
               <%= link_to "フォローする", user_relationships_path(rank.user.id), method: :post %>
             <% end %>
           </div>
-          
+
         <% end %>
       </div>
     </div>
