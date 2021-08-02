@@ -18,9 +18,16 @@
       <%= image_tag 'image3.jpg', class:'col' %>
     </div>
   </div>
+  
+  <div>
+    <% @posts.each do |post| %>
+      <%= post.content %>
+      <%= post.user.name %>
+    <% end %>
+  </div>
 
   <button class="alert_btn" style="width :50px; height: 50px;"></button>
-
+  
 　<!--accordion-containerの中にtitleとontentを配置-->
 　<!--cardとcard-bodyはBootstrapのものなので使わない方は無視して-->
   <div class="card accordion-container">
