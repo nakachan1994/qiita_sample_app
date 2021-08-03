@@ -1,0 +1,17 @@
+<!--検索フォーム-->
+<%= search_form_for @q do |f| %>
+  <!--name_contは、あいまい検索を指定-->
+  <%= f.text_field :name_cont %>
+  <%= f.submit "検索" %>
+<% end %>
+<!--検索結果-->
+<% if @users.present? %>
+  <!--検索がヒットした場合-->
+  <% @users.each do |user| %>
+    <%= user.id %>
+    <%= user.name %>
+  <% end %>
+<% else %>
+  <!--検索がヒットしなかった場合-->
+  <p>検索結果はありません</p>
+<% end %>
