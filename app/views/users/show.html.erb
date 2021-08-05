@@ -4,6 +4,6 @@
 <%= link_to 'フォロー一覧', user_followings_path(@user) %>
 <%= link_to 'フォロワー一覧', user_followers_path(@user) %>
 <% if current_user == @user %>
-    <%= link_to 'ユーザー情報編集', edit_user_path(@user) %>
-    
+  <%= link_to 'ユーザー情報編集', edit_user_path(@user) %>
+  <%= link_to "ユーザー情報削除", users_path(@user), method: :delete, data: {confirm: "本当に削除しますか？"} %>
 <% end %>
