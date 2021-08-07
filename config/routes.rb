@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'ranks/rank'
-  devise_for :users
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+    # Twitter API認証用
+    :omniauth_callbacks => 'users/omniauth_callbacks',
+  }
+
   root to: 'homes#top'
   resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resource :likes, only:[:create, :destroy]
