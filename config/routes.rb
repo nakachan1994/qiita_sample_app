@@ -7,18 +7,18 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations',
     # Twitter API認証用
-    :omniauth_callbacks => 'users/omniauth_callbacks',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   root to: 'homes#top'
-  resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
-    resource :likes, only:[:create, :destroy]
-    resources :comments, only: [:create, :destroy]
+  resources :posts, only: %i[new create index show destroy edit update] do
+    resource :likes, only: %i[create destroy]
+    resources :comments, only: %i[create destroy]
   end
 
   # ネストさせる
   resources :users do
-    resource :relationships, only: [:create, :destroy]
+    resource :relationships, only: %i[create destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
     collection do
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   # 追加
-  resources :contacts, only: [:new, :create] do
+  resources :contacts, only: %i[new create] do
     collection do
       post :confirm
       get :complete

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def index
     # distinct: trueは重複したデータを除外
-   @users = @q.result(distinct: true)
+    @users = @q.result(distinct: true)
   end
 
   def edit
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "ユーザー情報を変更しました"
+      redirect_to user_path(@user), notice: 'ユーザー情報を変更しました'
     else
       render :edit
     end

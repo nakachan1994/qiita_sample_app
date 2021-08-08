@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Post.create!(
-  content: "てすとほげ",
+  content: 'てすとほげ',
   user_id: 1
 )
 
@@ -18,6 +18,6 @@ Post.create!(
     # n + 1で数字が重複しないようにする
     email: "test#{n + 1}@test.com",
     name: "テストユーザー#{n + 1}",
-    password: "testhoge"
+    password: 'testhoge'
   )
 end

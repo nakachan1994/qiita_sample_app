@@ -1,25 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe "Contacts", type: :request do
-  describe "GET /new" do
-    it "returns http success" do
-      get "/contacts/new"
+RSpec.describe 'Contacts', type: :request do
+  describe 'GET /new' do
+    it 'returns http success' do
+      get '/contacts/new'
       expect(response).to have_http_status(:success)
     end
   end
 
   # POSTになっている
-  describe "POST /confirm" do
-    it "returns http success" do
+  describe 'POST /confirm' do
+    it 'returns http success' do
       # newアクションから送られてきた値をもたせてあげる
       post confirm_contacts_path, params: { contact: { name: 'test', email: 'a@a', content: 'content sample' } }
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /complete" do
-    it "returns http success" do
-      get "/contacts/complete"
+  describe 'GET /complete' do
+    it 'returns http success' do
+      get '/contacts/complete'
       expect(response).to have_http_status(:success)
     end
   end

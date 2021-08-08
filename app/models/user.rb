@@ -16,14 +16,14 @@ class User < ApplicationRecord
   # ゲストログイン用
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
-      user.name = "ゲスト"
+      user.name = 'ゲスト'
       user.password = SecureRandom.urlsafe_base64
     end
   end
 
   # フォローをした、されたの関係
-  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
 
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
@@ -33,15 +33,17 @@ class User < ApplicationRecord
   def follow(user_id)
     relationships.create(followed_id: user_id)
   end
+
   # フォローを外すときの処理
   def unfollow(user_id)
     relationships.find_by(followed_id: user_id).destroy
   end
+
   # フォローしているか判定
   def following?(user)
     followings.include?(user)
   end
-  
+
   # Twitter認証ログイン用
   # ユーザーの情報があれば探し、無ければ作成する
   def self.find_for_oauth(auth)
